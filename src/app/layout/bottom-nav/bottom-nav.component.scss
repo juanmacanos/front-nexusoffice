@@ -1,0 +1,39 @@
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: white;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+  
+    a {
+      text-decoration: none;
+      color: #555;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.75rem;
+  
+      &.active {
+        color: #007bff;
+      }
+  
+      .icon {
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+    }
+  }
+  .profile-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: border 0.2s ease;
+  }

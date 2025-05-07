@@ -1,0 +1,28 @@
+<button class="menu-toggle" (click)="toggleSidebar()">
+    ☰
+</button>
+
+<nav class="sidebar" [class.show]="sidebarVisible">
+    <img src="favicon.png" alt="Nexus Office Logo" class="logo" />
+
+    <ul class="nav-links">
+        <li>
+            <a routerLink="/user-panel" routerLinkActive="active">
+                <mat-icon>dashboard</mat-icon>
+                <span>Plano</span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/calendar" routerLinkActive="active">
+                <mat-icon>event</mat-icon>
+                <span>Calendario</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="profile-avatar">
+        <a routerLink="/profile">
+            <img src="https://i.pravatar.cc/40" alt="Avatar" />
+        </a>
+    </div>
+</nav>

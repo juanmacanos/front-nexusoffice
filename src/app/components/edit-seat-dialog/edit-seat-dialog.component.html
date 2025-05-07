@@ -1,0 +1,22 @@
+<h2 mat-dialog-title class="dialog-title">Editar asiento</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()" class="dialog-form">
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Usuario prioritario</mat-label>
+        <mat-select formControlName="priorityUser">
+            <mat-option [value]="null">Sin prioridad</mat-option>
+            <mat-option *ngFor="let user of users" [value]="user.id">
+                {{ user.name }} ({{ user.email }})
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+
+
+    <div class="dialog-actions">
+        <button mat-stroked-button type="button" (click)="close()">Cancelar</button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Guardar</button>
+    </div>
+</form>

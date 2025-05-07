@@ -1,0 +1,24 @@
+<div class="profile-container">
+    <h2>Perfil de Usuario</h2>
+  
+    <div class="info-item">
+      <mat-icon>person</mat-icon>
+      <p><strong>{{ user?.name }}</strong></p>
+    </div>
+  
+    <div class="info-item">
+      <mat-icon>mail</mat-icon>
+      <p> {{ user?.email }}</p>
+    </div>
+  
+    <div class="info-item">
+      <mat-icon>security</mat-icon>
+      <p class="badge" [ngClass]="user?.role?.toLowerCase()">{{ user?.role }}</p>
+    </div>
+
+    <button mat-flat-button color="primary" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Cerrar sesión
+    </button>
+  </div>
+  

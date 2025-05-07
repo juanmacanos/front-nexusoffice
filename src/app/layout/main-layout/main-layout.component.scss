@@ -1,0 +1,36 @@
+.main-layout {
+    display: flex;
+    height: 100dvh;
+    width: 100%;
+    position: relative;
+  }
+  
+  .desktop-only {
+    width: 80px; // 👈 ancho fijo del sidebar
+    flex-shrink: 0;
+  
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  
+  .mobile-only {
+    display: none;
+  
+    @media (max-width: 768px) {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+  }
+  
+  .content {
+    flex: 1;
+    //padding: 2rem;
+    overflow-y: auto;
+    margin-bottom: 50px;
+  }
+  

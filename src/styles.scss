@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.custom-dialog .mat-mdc-dialog-surface {
+    border-radius: 5px !important;
+    box-shadow: 0px 0px 5px gray;
+}
+
+.mat-mdc-snack-bar-container {
+    &.success {
+      --mdc-snackbar-container-color: green;
+      --mat-mdc-snack-bar-button-color: #fff;
+      --mdc-snackbar-supporting-text-color: #fff;
+
+      background: var(--mdc-snackbar-container-color) !important;
+      color: var(--mdc-snackbar-supporting-text-color) !important;
+      border-radius: 8px;
+    }
+
+    &.error{
+        --mdc-snackbar-container-color: red;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
+  
+        background: var(--mdc-snackbar-container-color) !important;
+        color: var(--mdc-snackbar-supporting-text-color) !important;
+        border-radius: 8px;
+    }
+
+    &.info{
+        --mdc-snackbar-container-color: blue;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
+  
+        background: var(--mdc-snackbar-container-color) !important;
+        color: var(--mdc-snackbar-supporting-text-color) !important;
+        border-radius: 8px;
+    }
+  }

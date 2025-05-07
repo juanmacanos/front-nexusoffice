@@ -1,0 +1,82 @@
+<section class="user-panel">
+    <div class="header-actions">
+        <div class="date-display">
+            <h1 class="formatted-date">{{ formattedDate | titlecase }}</h1>
+
+            <mat-datepicker-toggle [for]="picker" matSuffix>
+                <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+            </mat-datepicker-toggle>
+
+            <mat-datepicker #picker></mat-datepicker>
+
+            <input style="opacity: 0; height: 0; width:0" matInput [matDatepicker]="picker" [value]="selectedDate"
+                (dateChange)="onDateChange($event.value)" />
+        </div>
+
+        <div class="top-actions">
+            <ng-container *ngIf="!isPastDate">
+                <ng-container *ngIf="!userHasBooking">
+                    <button class="action-btn primary" (click)="onReserve()">
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </ng-container>
+
+                <ng-container *ngIf="userHasBooking">
+                    <button class="action-btn secondary" (click)="onCancel()">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </ng-container>
+            </ng-container>
+
+            <button *ngIf="isPastDate" class="action-btn disabled" disabled>
+                <mat-icon>block</mat-icon>
+            </button>
+            <script src=""></script>
+            <button *ngIf="isAdmin && viewMode === 'grid'" class="outline-btn" (click)="toggleEditMode()">
+                <mat-icon>{{ editMode ? 'check_circle' : 'edit' }}</mat-icon>
+            </button>
+            <button class="outline-btn" (click)="toggleView()">
+                <mat-icon>{{ viewMode === 'grid' ? 'list' : 'grid_view' }}</mat-icon>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Vista de plano -->
+    <div class="office-plan" *ngIf="viewMode === 'grid'">
+        <div class="seat" *ngFor="let cell of gridCells" [class.occupied]="getPlace(cell)?.occupied"
+            [class.mine]="getPlace(cell)?.username === userName" [class.selectable]="editMode"
+            [class.empty]="!getPlace(cell)" [style.gridColumn]="cell.x" [style.gridRow]="cell.y"
+            (click)="editMode && onSeatClick(getPlace(cell) ?? cell)">
+            <div>
+                <div class="seat-label">{{ getPlace(cell)?.name || getPlace(cell)?.placeId?"Puesto
+                    "+getPlace(cell)?.placeId:"" }}</div>
+                <div class="seat-user" *ngIf="getPlace(cell)?.occupied">
+                    {{ getPlace(cell)?.username }}
+                </div>
+            </div>
+
+            <div class="context-menu" *ngIf="selectedSeat && selectedSeat?.x === cell.x && selectedSeat?.y === cell.y">
+                <button *ngIf="!getPlace(cell)" (click)="addSeat(cell); $event.stopPropagation()">Añadir</button>
+                <button *ngIf="getPlace(cell)"
+                    (click)="editSeat(getPlace(cell)!); $event.stopPropagation()">Editar</button>
+                <button class="cancel" (click)="closeContextMenu(); $event.stopPropagation()">Cancelar</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Vista de lista -->
+    <div class="seat-list" *ngIf="viewMode === 'list'">
+        <ul>
+            <li *ngFor="let place of places">
+                <strong>{{ 'Puesto ' + place.placeId }}</strong> –
+                <span [ngClass]="{ 'occupied': place.occupied, 'free': !place.occupied }">
+                    {{ place.occupied ? place.username : 'Libre' }}
+                </span>
+            </li>
+        </ul>
+    </div>
+
+</section>

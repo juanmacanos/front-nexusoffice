@@ -1,0 +1,84 @@
+.profile-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: start;
+
+    h2 {
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.2rem;
+        justify-content: start;
+
+        mat-icon {
+            color: #007bff;
+        }
+
+        p {
+            margin: 0;
+            font-size: 1rem;
+
+            strong {
+                margin-right: 0.25rem;
+                color: #444;
+            }
+        }
+        
+    }
+
+    button {
+        margin-top: 2rem;
+        font-weight: bold;
+
+        mat-icon {
+            margin-right: 0.5rem;
+        }
+    }
+
+
+}
+.badge {
+    display: inline-block;
+    padding: 0.35em 0.75em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    background-color: #3f51b5; // Azul por defecto
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+  
+  // Colores opcionales según rol
+  .badge.admin {
+    background-color: #d32f2f; // rojo
+  }
+  
+  .badge.member {
+    background-color: #388e3c; // verde
+  }
+
+@media (max-width: 768px) {
+    .profile-container {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
+        margin: 0 auto;
+        padding: 1.5rem;
+
+        h2{
+            font-size: 1.6rem;
+        }
+    }
+}

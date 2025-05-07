@@ -1,0 +1,232 @@
+.calendar-panel {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-container {
+  height: 100%;
+  padding: 2rem;
+}
+
+/* Estilos generales para vista mensual */
+::ng-deep .cal-month-view {
+  height: 100%;
+  //min-height: 600px;
+  margin-bottom: 50px;
+}
+
+::ng-deep .cal-month-view .cal-day-cell {
+  height: 50px;
+  min-height: 50px;
+  padding: 0;
+}
+
+/* Cabecera del calendario */
+::ng-deep .cal-month-view .cal-header .cal-cell {
+  font-size: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  padding: 0.25rem;
+}
+
+::ng-deep .cal-week-view .cal-day-headers .cal-header {
+  text-align: center;
+  font-size: 0.7rem;
+  width: 40px;
+  padding: 0.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+::ng-deep .cal-week-view .cal-day-column {
+  min-height: 200px;
+  border: none;
+}
+
+/* Eventos */
+::ng-deep .cal-event {
+  font-size: 0.75rem;
+  padding: 2px 4px;
+  border-radius: 12px;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+::ng-deep .cal-event-title {
+  font-size: 0.75rem;
+}
+
+/* Centrado de eventos */
+::ng-deep .cal-month-view .cal-day-cell .cal-events {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+::ng-deep .cal-month-view .cal-event {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  margin-top: 4px;
+}
+
+/* Celda personalizada */
+::ng-deep .custom-cell {
+  padding: 0.25rem 0.4rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  font-size: 0.75rem;
+}
+
+::ng-deep .custom-cell.has-event.past {
+  background-color: #e8f5e9; 
+  border-left: 4px solid #4caf50;
+}
+
+::ng-deep .custom-cell.has-event.future {
+  background-color: #e3f2fd; 
+  border-left: 4px solid #007bff;
+}
+
+::ng-deep .custom-cell .day-number {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+::ng-deep .custom-cell .reservation-label {
+  margin-top: 0.1rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #007bff;
+}
+
+::ng-deep .custom-cell.outside-month {
+  opacity: 0.3;
+}
+
+/* Cabecera del mes */
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+
+  .month-label {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+  width: 80%;
+  align-self: center;
+}
+
+.stat-card {
+  background-color: #f5f5f5;
+  border-left: 4px solid #2196f3;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  min-width: 180px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  .title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+
+  .value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2196f3;
+  }
+}
+::ng-deep .custom-cell.highlight-attended {
+  background-color: #dcedc8 !important;
+  border-left: 4px solid #8bc34a;
+}
+
+::ng-deep .custom-cell.highlight-future {
+  background-color: #bbdefb !important;
+  border-left: 4px solid #2196f3;
+}
+::ng-deep .custom-cell.highlight-all {
+  background-color: #f0f4c3 !important; // amarillo claro
+  border-left: 4px solid #c0ca33;
+}
+.user-select {
+  margin-bottom: 1rem;
+  max-width: 300px;
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    
+    mat-label, mat-select {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .calendar-container {
+    padding: 1rem;
+  }
+
+  ::ng-deep .cal-month-view .cal-header .cal-cell {
+    font-size: 0.65rem;
+  }
+
+  ::ng-deep .cal-month-view .cal-day-cell {
+    height: 40px;
+    min-height: 40px;
+  }
+
+  ::ng-deep .custom-cell {
+    font-size: 0.7rem;
+    padding: 0.2rem;
+  }
+
+  ::ng-deep .custom-cell .reservation-label {
+    font-size: 0.6rem;
+  }
+
+}

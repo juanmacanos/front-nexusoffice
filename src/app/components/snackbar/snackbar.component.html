@@ -1,0 +1,7 @@
+<div class="snackbar-container" [ngClass]="data.type">
+    <mat-icon class="snackbar-icon">
+      {{ data.type === 'info'?'info':(data.type === 'success' ? 'check_circle' : 'error') }}
+    </mat-icon>
+    {{ data.message }}
+  </div>
+  

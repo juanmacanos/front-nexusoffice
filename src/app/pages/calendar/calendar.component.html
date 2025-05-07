@@ -1,0 +1,66 @@
+<div class="calendar-panel">
+    <div style="display:flex; justify-content: space-between;">
+        <h2 style="text-align:start;">Historial</h2>
+        <div class="user-select" *ngIf="isAdmin">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Buscar usuario</mat-label>
+                <mat-select [(value)]="selectedUserId" (selectionChange)="onUserSelected($event.value)">
+                    <mat-option *ngFor="let user of users" [value]="user.id">
+                        {{ user.name }} - <small> {{ user.email }}</small>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+    </div>
+    <div class="calendar-header">
+        <button mat-icon-button (click)="previousMonth()">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <h2 class="month-label">{{ viewDate | date: 'MMMM yyyy' | titlecase }}</h2>
+
+        <button mat-icon-button (click)="nextMonth()">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
+
+    <div class="calendar-container">
+        <ng-container [ngSwitch]="view">
+            <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events"
+                [cellTemplate]="customMonthCell" (dayClicked)="goToDate($event.day.date)">
+
+            </mwl-calendar-month-view>
+            <ng-template #customMonthCell let-day="day">
+                <div class="custom-cell" [class.has-event]="day.events.length > 0" [class.outside-month]="!day.inMonth"
+                    [class.highlight-attended]="highlightMode === 'attended' && isAttended(day.date)"
+                    [class.highlight-future]="highlightMode === 'future' && isFuture(day.date)"
+                    [class.highlight-all]="highlightMode === 'all' && hasEvent(day.date)">
+                    <div class="day-number">{{ day.date | date: 'd' }}</div>
+                    <div class="reservation-label" *ngIf="day.events.length > 0">
+                        {{ isMobile ? 'R' : 'RESERVA' }}
+                    </div>
+                </div>
+            </ng-template>
+
+
+        </ng-container>
+    </div>
+    <div class="stats-container">
+        <div class="stat-card" (mouseenter)="highlightMode = 'attended'" (mouseleave)="highlightMode = null"
+            (click)="highlightMode = highlightMode === 'attended' ? null : 'attended'">
+            <div class="title">Asistencias este mes</div>
+            <div class="value">{{ attendedCount }}</div>
+        </div>
+        <div class="stat-card" (mouseenter)="highlightMode = 'all'" (mouseleave)="highlightMode = null"
+            (click)="highlightMode = highlightMode === 'all' ? null : 'all'">
+            <div class="title">Reservas totales este mes</div>
+            <div class="value">{{ totalReservations }}</div>
+        </div>
+        <div class="stat-card" (mouseenter)="highlightMode = 'future'" (mouseleave)="highlightMode = null"
+            (click)="highlightMode = highlightMode === 'future' ? null : 'future'">
+            <div class="title">Reservas futuras este mes</div>
+            <div class="value">{{ futureReservations }}</div>
+        </div>
+    </div>
+</div>
