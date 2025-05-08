@@ -1,62 +1,59 @@
 .ios-install-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #f1f1f1;
-    color: #333;
-    padding: 1rem;
-    font-size: 0.9rem;
-    border-top: 1px solid #ccc;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-    z-index: 1000;
-  
-    p {
-      margin: 0 0 0.5rem 0;
-      font-weight: bold;
-    }
-  
-    ol {
-      margin: 0 0 0.5rem 1.2rem;
-    }
-  
-    button {
-      background-color: #007bff;
-      color: white;
-      padding: 0.4rem 1rem;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f1f1f1;
+  color: #333;
+  padding: 1rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  p {
+    margin: 0 0 0.5rem 0;
+    font-weight: bold;
   }
-  
-  @media (max-width: 768px) {
-    .install-button {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      z-index: 1000;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 999px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-  
-      mat-icon {
-        font-size: 1.2rem;
-      }
-  
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
+
+  ol {
+    margin: 0 0 0.5rem 1.2rem;
   }
-  
+
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.4rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+.install-button {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  mat-icon {
+    font-size: 1.2rem;
+  }
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
