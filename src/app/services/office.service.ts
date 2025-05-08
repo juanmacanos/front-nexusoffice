@@ -9,7 +9,8 @@ export interface Place {
   x: number;
   y: number;
   occupied: boolean;
-  username: string | null;
+  userId: number | null;
+  userName: string | null;
   preferredUserId: number;
 }
 

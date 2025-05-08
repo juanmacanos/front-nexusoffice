@@ -45,14 +45,14 @@
     <!-- Vista de plano -->
     <div class="office-plan" *ngIf="viewMode === 'grid'">
         <div class="seat" *ngFor="let cell of gridCells" [class.occupied]="getPlace(cell)?.occupied"
-            [class.mine]="getPlace(cell)?.username === userName" [class.selectable]="editMode"
+            [class.mine]="getPlace(cell)?.userId === userId" [class.selectable]="editMode"
             [class.empty]="!getPlace(cell)" [style.gridColumn]="cell.x" [style.gridRow]="cell.y"
             (click)="editMode && onSeatClick(getPlace(cell) ?? cell)">
             <div>
                 <div class="seat-label">{{ getPlace(cell)?.name || getPlace(cell)?.placeId?"Puesto
                     "+getPlace(cell)?.placeId:"" }}</div>
                 <div class="seat-user" *ngIf="getPlace(cell)?.occupied">
-                    {{ getPlace(cell)?.username }}
+                    {{ getPlace(cell)?.userName }}
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
             <li *ngFor="let place of places">
                 <strong>{{ 'Puesto ' + place.placeId }}</strong> –
                 <span [ngClass]="{ 'occupied': place.occupied, 'free': !place.occupied }">
-                    {{ place.occupied ? place.username : 'Libre' }}
+                    {{ place.occupied ? place.userName : 'Libre' }}
                 </span>
             </li>
         </ul>

@@ -22,7 +22,8 @@ interface Place {
   x: number;
   y: number;
   occupied: boolean;
-  username: string | null;
+  userId: number | null;
+  userName: string | null;
   preferredUserId: number;
 }
 
@@ -104,7 +105,7 @@ export class UserPanelComponent implements OnInit {
     this.officeService.getAvailability(dateStr).subscribe(places => {
       this.places = places;
       console.log("places", places)
-      this.userHasBooking = this.places.some(p => p.username === this.userName);
+      this.userHasBooking = this.places.some(p => p.userId === this.userId);
     });
   }
 
@@ -177,7 +178,8 @@ export class UserPanelComponent implements OnInit {
       ...cell,
       placeId: (cell as Place).placeId ?? null,
       name: (cell as Place).name ?? null,
-      username: (cell as Place).username ?? null,
+      userId: (cell as Place).userId ?? null,
+      userName: (cell as Place).userName ?? null,
       occupied: (cell as Place).occupied ?? false,
       preferredUserId: (cell as Place).preferredUserId ?? null
     };
