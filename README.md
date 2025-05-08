@@ -79,6 +79,8 @@ npm install     # Instalación de dependencias
 npm start       # Servidor local en modo desarrollo
 npm run build   # Compilación producción (PWA incluida)
 
+---
+
 📄 Licencia
 MIT © 2025 – Juanma Canó
 
