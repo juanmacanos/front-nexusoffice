@@ -294,6 +294,12 @@ mat-icon {
         height: auto;
         aspect-ratio: 1;
         width: 100%;
+
+        .seat {
+            .seat-user {
+                font-size: 0.75rem;
+            }
+        }
     }
 
     .actions {
@@ -303,8 +309,6 @@ mat-icon {
     .formatted-date {
         font-size: 1rem;
     }
-
-
     mat-icon {
         font-size: 1rem;
     }
