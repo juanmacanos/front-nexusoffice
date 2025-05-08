@@ -1,100 +1,85 @@
 # Nexus Office – Frontend
 
-Interfaz web desarrollada en Angular para la gestión y reserva de puestos de trabajo dentro de una oficina moderna. Pensada para empleados y administradores, incluyendo vista de plano interactivo, historial de reservas y estadísticas de asistencia.
+Interfaz de usuario desarrollada en Angular para la gestión de reservas de puestos de trabajo en oficinas. Optimizada para móvil, escritorio y Progressive Web App (PWA).
+
+🔗 Repositorio backend complementario: [back-nexusoffice](https://github.com/juanmacanos/back-nexusoffice)
 
 ---
 
-## 🚀 Funcionalidades actuales
+## ⚙️ Funcionalidades Implementadas
 
-### 👤 Autenticación
-- **Login y registro** con validación de campos.
-- **Gestión de tokens JWT**.
-- Modo de login con formulario doble (login y registro en la misma vista).
-- **Logout** con snackbar de confirmación.
+### 🔐 Autenticación
+- Inicio de sesión y registro con validación de formularios.
+- Uso de **JWT** para autenticar peticiones al backend.
+- Gestión de sesión con `Authorization: Bearer` en cabeceras HTTP.
+- Visual feedback con `SnackbarComponent` para errores y acciones exitosas.
 
-### 🗺️ Panel de usuario
-- Vista de plano interactivo de la oficina con asignación de puestos.
-- Modo **lista** alternativa al grid visual.
-- Reserva o cancelación de puesto según disponibilidad.
-- **Botón flotante** contextual que cambia entre reservar / cancelar según el estado.
-- Vista responsive adaptada a dispositivos móviles.
-- Gestión visual de asientos ocupados, libres, o del propio usuario.
+### 🖥️ Panel de usuario
+- Plano editable y responsivo con asignación visual de puestos (`grid` o `list view`).
+- Botón flotante de acción contextual para reservar o cancelar.
+- Deep linking con calendar por fecha vía `queryParams`.
+- Vista especial para **administradores**:
+  - Añadir, editar o eliminar puestos de trabajo directamente desde el plano.
+  - Cambiar vista y editar disposición en tiempo real.
 
-### 📅 Calendario
-- Vista de calendario mensual con días reservados destacados.
-- Días con reservas pasadas o futuras diferenciados por color.
-- Posibilidad de navegar entre meses y ver estadísticas del mes:
-  - Asistencias realizadas.
-  - Reservas futuras.
-  - Total de reservas.
-- Vista adaptada para móviles (etiquetas abreviadas, colores y diseño compactado).
-- Selección de días que redirige al panel con la fecha filtrada.
+### 📆 Calendario
+- Vista mensual y semanal con integración de eventos (reservas).
+- Estadísticas mensuales: asistencias realizadas, reservas futuras y totales.
+- Resaltado visual de días según tipo de reserva y estado.
+- Redirección al día seleccionado para realizar reservas directamente.
 
-### 🔍 Búsqueda y administración
-- Los **administradores** pueden:
-  - Buscar cualquier usuario desde el calendario.
-  - Ver su historial de asistencias.
-  - Editar plano de asientos (agregar, eliminar, modificar puestos).
-  - Cambiar entre modos de edición y visualización.
+### 🔍 Gestión de usuarios (Admin)
+- Selector para ver el calendario de cualquier usuario.
+- Filtro por nombre con opción para volver a visualizar el propio historial.
 
-### 🌐 PWA – Progressive Web App
-- Aplicación instalable en dispositivos móviles y escritorio.
-- Soporte para notificaciones con snackbar personalizado.
-- Soporte offline y caching mediante Service Worker.
-- Manifest configurado con icono optimizado y fondo adaptable.
+### 📱 Progressive Web App (PWA)
+- Instalación desde Android o escritorio.
+- Cacheo offline y soporte con `serviceWorker`.
+- `manifest.webmanifest` personalizado con logo adaptado para distintos entornos.
 
 ### 👤 Perfil
-- Página de perfil con información básica del usuario autenticado (nombre, email, rol).
-- Botón de cierre de sesión.
+- Visualización de nombre, email y rol del usuario logeado.
+- Logout funcional con feedback.
 
 ---
 
-## 🧩 Tecnologías utilizadas
+## 🧠 Aspectos técnicos
 
-- **Angular 19** con Standalone Components
-- **Angular Material**
-- **RxJS**
-- **Date-fns**
-- **Angular Calendar**
-- **PWA Support**
-- **SCSS modular y responsive**
-
----
-
-## 📦 Estructura general
-
-src/
-├── app/
-│ ├── pages/ (user-panel, calendar, login, profile)
-│ ├── components/ (snackbar, sidebar, etc.)
-│ ├── services/
-│ ├── core/ (auth, guards)
-│ ├── layout/
-│ └── shared/
-
+- Angular v19 (standalone components, signals ready).
+- Angular Material con theming y responsive design.
+- Calendar personalizado (angular-calendar).
+- Arquitectura modular (pages, components, services, core, layout).
+- Sistema visual adaptado con `BreakPointObserver`.
+- SCSS estructurado con mobile-first.
+- Uso de `MatSnackBar` para notificaciones centralizadas.
 
 ---
 
-## 🔮 Posibles mejoras futuras
+## 🛠️ Posibles mejoras técnicas
 
-- Notificaciones push para recordar reservas.
-- Reserva recurrente (por ejemplo: todos los martes del mes).
-- Filtro de puestos por características (pantalla, cerca de ventana, etc).
-- Estadísticas globales por usuario (historial completo, ranking de asistencia).
-- Gestión de usuarios (creación, roles, etc) desde el frontend.
-- Modo oscuro y personalización visual.
-- Exportación de calendario (ICS/Google Calendar).
-- Integración con QR para check-in presencial.
+- 🌙 Modo oscuro configurable por usuario.
+- 🗓️ Exportación a Google Calendar / ICS.
+- 📈 Dashboard de estadísticas globales por departamento o usuario.
+- 🧩 Mejor estructuración por componentes: dividir vistas como `calendar` o `user-panel` en subcomponentes (`calendar-header`, `stat-card`, `user-selector`, etc.).
+- 🧠 Separación de lógica de presentación: delegar cálculos y lógica compleja a servicios dedicados.
+- 🔐 Persistencia del token más segura: uso de cookies HttpOnly en vez de `localStorage`. Esto es competencia del backend realmente, pero debería de dejar de guardarse en localStorage actualmente en el frontend, para evitar ataques XSS.
+- 📧 Confirmación de cuenta por email al registrarse. Competencia del backend, pero la implicación del frontend es crear la vista para confirmar la cuenta.
+- ✉️ Sistema de notificaciones por email para reservas, recordatorios o cambios.
+- ⚙️ Manejo global de errores y estados de carga con interceptores y servicios compartidos.
+- 📲 Soporte PWA más completo: caché offline, actualización automática y fallback en ausencia de red.
+- ♿ Mejoras de accesibilidad: navegación por teclado, etiquetas ARIA y contraste correcto.
 
----
-
-## 👨‍💻 Contribución
-
-¿Quieres colaborar? Abre un pull request o crea una issue con tus sugerencias.
 
 ---
 
-## 📜 Licencia
+## ▶️ Scripts útiles
 
-MIT © 2025 – Juan Manuel Canó Serrano
+```bash
+npm install     # Instalación de dependencias
+npm start       # Servidor local en modo desarrollo
+npm run build   # Compilación producción (PWA incluida)
+
+📄 Licencia
+MIT © 2025 – Juanma Canó
+
 
