@@ -89,6 +89,7 @@ export class UserPanelComponent implements OnInit {
     if (!token) return;
     const payload = JSON.parse(atob(token.split('.')[1]));
     this.isAdmin = payload.role?.includes('ADMIN');
+    this.userId = payload.userId;
     this.userName = payload.sub || 'Usuario';
   }
 
