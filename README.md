@@ -78,7 +78,7 @@ Interfaz de usuario desarrollada en Angular para la gestión de reservas de pues
 npm install     # Instalación de dependencias
 npm start       # Servidor local en modo desarrollo
 npm run build   # Compilación producción (PWA incluida)
-
+```
 ---
 
 📄 Licencia
