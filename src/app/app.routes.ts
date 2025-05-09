@@ -5,6 +5,7 @@ import { publicGuard } from './core/guards/public.guard';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { CalendarViewGlobalComponent } from './pages/heatmap/heatmap.component';
 
 
 export const routes: Routes = [
@@ -21,6 +22,7 @@ export const routes: Routes = [
       { path: 'user-panel', component: UserPanelComponent },
       { path: 'calendar', component: CalendarComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'global', component: CalendarViewGlobalComponent},
       { path: '', redirectTo: 'user-panel', pathMatch: 'full' },
     ]
   },

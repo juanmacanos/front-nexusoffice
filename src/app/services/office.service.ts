@@ -12,6 +12,7 @@ export interface Place {
   userId: number | null;
   userName: string | null;
   preferredUserId: number;
+  date?: string;
 }
 
 export interface User {
@@ -37,6 +38,16 @@ export class OfficeService {
   getAvailability(date: string): Observable<Place[]> {
     return this.http.get<Place[]>(this.AVAILABILITY_EP,  { params: {date}});
     
+  }
+  
+  getMonthlyAvailability(year: number, month: number): Observable<Place[]> {
+    const url = `${environment.apiUrl}/bookings/monthly-availability`;
+    return this.http.get<Place[]>(url, {
+      params: {
+        year: year.toString(),
+        month: month.toString()
+      }
+    });
   }
   
   createPlace(data: { name: string, x: number; y: number }): Observable<any> {

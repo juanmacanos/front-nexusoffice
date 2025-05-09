@@ -1,0 +1,48 @@
+<div class="attendance-container">
+    <div style="display:flex; justify-content: space-between;">
+        <h2 style="text-align:start;">Mapa de asistencia</h2>
+    </div>
+    <div class="month-navigation">
+        <button (click)="previousMonth()">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        <span>{{ currentDate | date: 'MMMM yyyy' | titlecase }}</span>
+        <button (click)="nextMonth()">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
+    <div class="attendance-map">
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th *ngFor="let day of daysInMonth">
+                        <div class="day-header">
+                            <strong>{{ day | date: 'd' }}</strong><br>
+                            <small>{{ day | date: 'EEE' }}</small>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.name }}</td>
+                    <td *ngFor="let day of daysInMonth">
+                        <div [ngClass]="getCellClass(user, day)"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+    <div class="legend">
+        <span>
+            <div class="legend-box has-booking"></div> Reserva
+        </span>
+        <span>
+            <div class="legend-box"></div> Sin reserva
+        </span>
+    </div>
+</div>
