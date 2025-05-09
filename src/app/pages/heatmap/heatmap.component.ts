@@ -5,6 +5,7 @@ import { startOfMonth, endOfMonth, eachDayOfInterval, format } from 'date-fns';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { addMonths, subMonths } from 'date-fns';
 import { MatIconModule } from '@angular/material/icon';
+import { Router, RouterModule } from '@angular/router';
 
 interface CalendarCell {
   date: string;
@@ -14,11 +15,11 @@ interface CalendarCell {
 @Component({
   selector: 'heatmap',
   standalone: true,
-  imports: [CommonModule, MatTooltipModule, MatIconModule],
+  imports: [CommonModule, MatTooltipModule, MatIconModule, RouterModule],
   templateUrl: './heatmap.component.html',
   styleUrls: ['./heatmap.component.scss']
 })
-export class CalendarViewGlobalComponent {
+export class HeatmapComponent {
   users: User[] = [];
   daysInMonth: string[] = [];
   dataMap: { [userId: number]: CalendarCell[] } = {};
