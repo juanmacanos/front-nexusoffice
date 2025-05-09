@@ -23,7 +23,7 @@ Interfaz de usuario desarrollada en Angular para la gestión de reservas de pues
   - Cambiar vista y editar disposición en tiempo real.
 
 ### 📆 Calendario
-- Vista mensual y semanal con integración de eventos (reservas).
+- Vista mensual con integración de eventos (reservas).
 - Estadísticas mensuales: asistencias realizadas, reservas futuras y totales.
 - Resaltado visual de días según tipo de reserva y estado.
 - Redirección al día seleccionado para realizar reservas directamente.
