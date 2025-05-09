@@ -27,7 +27,7 @@
             <tbody>
                 <tr *ngFor="let user of users">
                     <td>{{ user.name }}</td>
-                    <td *ngFor="let day of daysInMonth">
+                    <td *ngFor="let day of daysInMonth" [ngClass]="{ weekend: isWeekend(day) }">
                         <a
                           [routerLink]="['/user-panel']"
                           [queryParams]="{ date: dayToParam(day) }"

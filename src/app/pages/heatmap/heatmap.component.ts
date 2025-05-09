@@ -82,5 +82,9 @@ dayToParam(date: string | Date): string {
   return typeof date === 'string' ? date : format(date, 'yyyy-MM-dd');
 }
 
+isWeekend(date: string): boolean {
+  const day = new Date(date).getDay();
+  return day === 0 || day === 6; // Domingo o sábado
+}
 
 }
