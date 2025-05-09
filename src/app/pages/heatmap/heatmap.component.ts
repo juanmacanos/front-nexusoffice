@@ -86,5 +86,9 @@ isWeekend(date: string): boolean {
   const day = new Date(date).getDay();
   return day === 0 || day === 6; // Domingo o sábado
 }
-
+isToday(date: string): boolean {
+  const today = new Date();
+  const current = new Date(date);
+  return today.toDateString() === current.toDateString();
+}
 }
