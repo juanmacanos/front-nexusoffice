@@ -26,7 +26,8 @@ export class HeatmapComponent {
   currentDate = new Date();
 
   constructor(
-    private officeService: OfficeService
+    private officeService: OfficeService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -76,5 +77,10 @@ nextMonth() {
   this.loadDaysOfMonth();
   this.loadBookings();
 }
+
+dayToParam(date: string | Date): string {
+  return typeof date === 'string' ? date : format(date, 'yyyy-MM-dd');
+}
+
 
 }

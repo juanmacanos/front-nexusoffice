@@ -28,10 +28,16 @@
                 <tr *ngFor="let user of users">
                     <td>{{ user.name }}</td>
                     <td *ngFor="let day of daysInMonth">
-                        <a [routerLink]="['/user-panel']" [queryParams]="{ date: day | date: 'yyyy-MM-dd' }">
+                        <a
+                          [routerLink]="['/user-panel']"
+                          [queryParams]="{ date: dayToParam(day) }"
+                          matTooltip="{{ user.name }} - {{ day | date: 'dd MMMM' }}"
+                          matTooltipPosition="above"
+                        >
                           <div [ngClass]="getCellClass(user, day)"></div>
                         </a>
                       </td>
+                      
                       
                 </tr>
             </tbody>
