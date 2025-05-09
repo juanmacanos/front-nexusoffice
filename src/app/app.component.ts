@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterOutlet } from '@angular/router';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +20,11 @@ export class AppComponent {
   deferredPrompt: any;
   showInstallButton = false;
 
+  constructor(
+    private swUpdate: SwUpdate,
+    private snackbar: MatSnackBar
+  ) {}
+
   ngOnInit(): void {
     this.isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
     this.isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator['standalone'] as boolean);
@@ -32,6 +39,17 @@ export class AppComponent {
       this.deferredPrompt = event;
       this.showInstallButton = true;
     });
+
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.versionUpdates.subscribe(event => {
+        if (event.type === 'VERSION_READY') {
+          const snack = this.snackbar.open('Nueva versión disponible', 'Actualizar', {
+            duration: 8000,
+          });
+          snack.onAction().subscribe(() => window.location.reload());
+        }
+      });
+    }
   }
 
   installApp(): void {
